@@ -1,6 +1,0 @@
-{
-  "name": "Rituals Makhana",
-  "description": "Cognitive Performance Snack e-commerce website with wellness score tracking",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

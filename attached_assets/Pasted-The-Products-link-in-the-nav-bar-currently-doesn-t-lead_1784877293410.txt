@@ -1,0 +1,51 @@
+The "Products" link in the nav bar currently doesn't lead to a proper dedicated 
+page — it seems to be causing homepage sections to overlap incorrectly (a 
+duplicate "Shop Now" button and the CTA heading "Snack with purpose, focus 
+with ease" are showing up out of place).
+
+Please do the following:
+
+1. Create a NEW dedicated page/route at /products for Rituals Makhana, 
+   separate from the homepage.
+
+2. Update the nav bar's "Products" link to correctly navigate to this new 
+   /products route (instead of an anchor/section on the homepage).
+
+3. Build the Products page with this structure:
+
+   a) Reuse the same sticky nav pill (rituals makhana logo + Products/Benefits/
+      Our Story/Shop Now links) at the top — same style as homepage.
+
+   b) Hero header section:
+      - Small label: "OUR FLAVOURS"
+      - Heading: "Four flavours. One ritual."
+      - Subtext: "Roasted, not fried. Every pouch is crafted to fuel your 
+        focus, without compromising on taste."
+      - Background: soft beige (#EDE6DA)
+
+   c) Product grid (4 responsive columns desktop, 2 tablet, 1 mobile) using 
+      the uploaded product images (Himalayan Salt & Pepper, Pudina, Tangy 
+      Cheese, Peri Peri). Each card:
+      - Product image (object-fit: contain, background #EDE6DA, no cropping)
+      - Flavour name as heading
+      - Mood tag below name (Balanced / Refreshed / Indulgent / Energised) 
+        in flavour-matched accent color
+      - Placeholder price (₹199)
+      - Quantity selector (- / number / +)
+      - "Add to Cart" button (dark brown #3B2F1E background, cream text, 
+        pill shaped)
+      - Small icon row: Millet Free, Guilt Free, Plant Based
+
+   d) Simple cart: Add to Cart increments a cart badge in the nav; clicking 
+      the cart icon opens a slide-in drawer showing items, quantities, and 
+      total, with a "Proceed to Checkout" button (placeholder /checkout route).
+
+   e) Below the grid, a "Discovery Pack" banner section (all 4 flavours in 
+      one bundle) with its own Add to Cart button.
+
+4. Make sure the Products page does NOT include any homepage-only sections 
+   (like the CTA "Snack with purpose, focus with ease" block) — keep it fully 
+   separate and clean.
+
+5. Match all fonts, colors, and button styles to the existing homepage theme 
+   (beige #EDE6DA background, dark brown #3B2F1E accents, earthy palette).

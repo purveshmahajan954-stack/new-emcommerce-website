@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Learn why your focus dips mid-afternoon, and how a light, protein-rich snack can help you power through without the crash."/>
+  <title>The 3 PM Slump: How a Handful of Makhana Can Fix It — Rituals Makhana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --beige: #EDE6DA; --brown: #3B2F1E; --brown-mid: #5C4A38;
+      --cream: #F5EFE6; --gold: #C49A3C; --text: #2E1F0F;
+      --line: rgba(59,47,30,0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--beige); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    /* NAV */
+    #rituals-nav-outer { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; justify-content: center; padding: 14px 24px; pointer-events: none; }
+    #rituals-nav-pill { pointer-events: all; background: var(--beige); border-radius: 100px; padding: 8px 8px 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; max-width: 760px; box-shadow: 0 2px 16px rgba(74,59,42,0.12), 0 0 0 1px rgba(74,59,42,0.07); }
+    #rituals-nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    #rituals-nav-logo img { height: 44px; width: auto; display: block; }
+    #rituals-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    #rituals-nav-links a { font-size: 13px; font-weight: 500; color: var(--brown-mid); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; transition: color 0.18s; }
+    #rituals-nav-links a:hover { color: var(--text); }
+    #rituals-nav-cta { background: var(--brown) !important; color: var(--cream) !important; padding: 10px 20px; border-radius: 100px; font-size: 13px !important; font-weight: 600 !important; letter-spacing: 0.03em !important; transition: background 0.18s !important; flex-shrink: 0; text-decoration: none; }
+    #rituals-nav-cta:hover { background: #2C2215 !important; }
+
+    /* HERO */
+    .hero { min-height: 480px; position: relative; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding: 100px 24px 64px; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(25,18,10,.28) 0%, rgba(25,18,10,.72) 100%); }
+    .hero-inner { max-width: 720px; margin: 0 auto; width: 100%; }
+    .eyebrow { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; color: #fff; line-height: 1.08; letter-spacing: -.02em; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 24px; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+    .article-wrap p { color: var(--brown-mid); font-size: 1.0625rem; line-height: 1.85; margin-bottom: 1.5rem; }
+    .article-wrap h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; color: var(--text); line-height: 1.2; letter-spacing: -.02em; margin: 2.5rem 0 1rem; }
+    .article-wrap h3 { font-size: 1.125rem; font-weight: 700; color: var(--text); margin: 2rem 0 .75rem; }
+    .callout { background: var(--cream); border-left: 3px solid var(--gold); padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 2rem 0; }
+    .callout p { margin: 0; font-weight: 500; color: var(--text); font-size: .9375rem; }
+
+    /* CTA */
+    .article-cta { background: var(--brown); border-radius: 20px; padding: 48px 40px; text-align: center; margin-top: 64px; }
+    .article-cta h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; font-weight: 400; color: #fff; margin-bottom: 12px; }
+    .article-cta p { color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+    .cta-btn { display: inline-block; background: var(--gold); color: var(--brown); padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: 14px; letter-spacing: .04em; text-decoration: none; transition: opacity .18s; }
+    .cta-btn:hover { opacity: .85; }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--brown-mid); font-size: 13px; font-weight: 500; text-decoration: none; margin-bottom: 48px; transition: color .18s; }
+    .back-link:hover { color: var(--text); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* FOOTER */
+    footer { background: var(--brown); padding: 40px 24px; text-align: center; }
+    footer p { color: rgba(245,239,230,0.5); font-size: 13px; }
+    footer a { color: rgba(245,239,230,0.7); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+    .footer-links { margin-bottom: 16px; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 90px 20px 48px; min-height: 380px; }
+      .article-wrap { padding: 48px 20px 72px; }
+      .callout { padding: 16px 18px; }
+      #rituals-nav-links li:not(:last-child) { display: none; }
+      .article-cta { padding: 36px 20px; }
+      .article-cta h3 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="rituals-nav-outer">
+    <div id="rituals-nav-pill">
+      <a id="rituals-nav-logo" href="/">
+        <img src="/attached_assets/rituals_logo.png" alt="Rituals Makhana"/>
+      </a>
+      <ul id="rituals-nav-links">
+        <li><a href="/products">Products</a></li>
+        <li><a href="/benefits/">Benefits</a></li>
+        <li><a href="/#our-story">Our Story</a></li>
+        <li><a href="/products" id="rituals-nav-cta">Shop Now</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero">
+    <img src="/attached_assets/image_1784875094194.png" alt="Makhana in a bowl"/>
+    <div class="hero-inner">
+      <p class="eyebrow">Rituals Journal</p>
+      <h1>The 3 PM Slump: How a Handful of Makhana Can Fix It</h1>
+      <div class="hero-meta">
+        <span>5 min read</span>
+        <span>Focus &amp; Energy</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Home
+    </a>
+
+    <p>It's 3 PM. Your morning coffee has long worn off, your eyes are getting heavy, and you're staring at your screen wondering how to push through the rest of the day. Sound familiar? You're not alone — the afternoon energy crash is one of the most universal experiences of modern work life.</p>
+
+    <p>But here's the thing: what you reach for in that moment matters more than you think. Most people grab another coffee, a chocolate bar, or a handful of chips — and feel worse an hour later. There's a smarter way.</p>
+
+    <h2>Why the 3 PM Slump Happens</h2>
+
+    <p>Your body runs on a natural circadian rhythm, and there's a genuine, biological dip in alertness that happens in the early afternoon — typically between 1 PM and 3 PM. This isn't just a "post-lunch food coma." Even people who skip lunch experience it.</p>
+
+    <p>During this window, your core body temperature drops slightly, melatonin levels tick upward, and cognitive performance takes a measurable hit. Reaction time slows. Working memory dips. Sustained attention becomes harder.</p>
+
+    <p>Add to this the blood sugar rollercoaster that most modern diets create — high-carb lunches, sugary drinks, snacks that spike and crash — and you've got a recipe for a very rough afternoon.</p>
+
+    <div class="callout">
+      <p>The fix isn't more caffeine. It's stabilising your blood sugar and giving your brain a steady source of energy — exactly what a protein-rich, low-glycaemic snack does.</p>
+    </div>
+
+    <h2>What Your Brain Actually Needs</h2>
+
+    <p>When you're hitting a wall at 3 PM, your brain isn't asking for sugar — it's asking for stable fuel. The neurons firing to keep you focused run on glucose, yes, but they work best when that glucose arrives steadily, not in a spike-and-crash cycle.</p>
+
+    <p>This is where protein and fibre become your afternoon allies. They slow glucose absorption, smooth out your energy curve, and give you the kind of sustained mental clarity that carries you through to 6 PM without a second caffeine hit.</p>
+
+    <h3>Why Makhana Works</h3>
+
+    <p>Roasted makhana (fox nuts) hit a rare combination: they're light enough to not weigh you down, but substantial enough to satisfy. A 30g handful delivers roughly 4–5g of protein, meaningful fibre, and a glycaemic index well below that of chips, crackers, or rice cakes.</p>
+
+    <p>They also contain thiamine (B1), which plays a direct role in energy metabolism and nervous system function — precisely what you need when you're fighting afternoon brain fog.</p>
+
+    <h2>The Ritual Matters Too</h2>
+
+    <p>There's a psychological dimension to this that's easy to overlook. Taking a proper break — stepping away from your screen, making a deliberate choice to eat something good for you — signals to your nervous system that it's okay to downshift for a moment. That brief reset can do as much for your afternoon performance as the nutrients themselves.</p>
+
+    <p>This is why we call it a ritual rather than just a snack. The act of pausing, savouring bold flavour (our Himalayan Salt & Pepper and Peri Peri varieties do the job beautifully), and returning to work with intention is its own productivity hack.</p>
+
+    <div class="callout">
+      <p>Try this: replace your next 3 PM coffee with a handful of Rituals Makhana and a glass of water. Give it three days and notice the difference in how you feel by 5 PM.</p>
+    </div>
+
+    <h2>Making It a Habit</h2>
+
+    <p>The best snack is the one you actually reach for. Keep a pack on your desk or in your bag so the choice is easy when the slump hits. The bold flavours in Rituals Makhana make it genuinely enjoyable — not a "healthy eating" compromise, but something you actually look forward to.</p>
+
+    <p>Your afternoons don't have to feel like survival. They can feel like momentum.</p>
+
+    <div class="article-cta">
+      <h3>Ready to reclaim your afternoons?</h3>
+      <p>Try Rituals Makhana in four bold flavours — each one designed to make the right choice the easy choice.</p>
+      <a href="/products" class="cta-btn">Explore the Flavours</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/products">Products</a>
+      <a href="/benefits/">Benefits</a>
+      <a href="/#our-story">Our Story</a>
+    </div>
+    <p>© 2026 Rituals Makhana. Not Just a Snack. A Ritual.</p>
+  </footer>
+
+</body>
+</html>
