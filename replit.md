@@ -24,7 +24,7 @@ Server listens on port **5000**.
 | Key | Required | Status | Notes |
 |-----|----------|--------|-------|
 | `SESSION_SECRET` | Yes | ✅ Set | Express session signing key |
-| `SUPABASE_DATABASE_URL` | Yes | ✅ Set | PostgreSQL connection string for user accounts, wellness logs, and orders |
+| `SUPABASE_DATABASE_URL` | Yes | ✅ Set | PostgreSQL connection string (Supabase) for user accounts, wellness logs, and orders |
 | `RAZORPAY_KEY_ID` | No* | ✅ Set | Razorpay public key for payment processing |
 | `RAZORPAY_KEY_SECRET` | No* | ✅ Set | Razorpay secret key for order verification |
 
