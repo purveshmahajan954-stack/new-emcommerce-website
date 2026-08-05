@@ -15,12 +15,19 @@ const DB_FILE = path.join(ROOT, 'wellness_data.json');
 
 const DATABASE_URL = process.env.SUPABASE_DATABASE_URL;
 
-const pool = new Pool({
-  connectionString: DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+// Safe pool — if URL is missing or malformed, DB calls return a friendly error
+// instead of crashing the process.
+let pool;
+try {
+  if (!DATABASE_URL) throw new Error('SUPABASE_DATABASE_URL is not set');
+  pool = new Pool({ connectionString: DATABASE_URL, ssl: { rejectUnauthorized: false } });
+} catch (poolErr) {
+  console.warn('DB pool could not be created:', poolErr.message);
+  pool = {
+    connect: () => Promise.reject(new Error('DB_UNAVAILABLE')),
+    query:   () => Promise.reject(new Error('DB_UNAVAILABLE')),
+  };
+}
 
 async function initDb() {
   try {
@@ -327,7 +334,7 @@ app.post('/api/auth/register', async (req, res) => {
     return res.json({ id: newUser.id, name: newUser.name, email: newUser.email });
   } catch (err) {
     console.error('Register error:', err);
-    return res.status(500).json({ error: err.message || 'Failed to create account. Please try again.' });
+    return res.status(500).json({ error: 'Unable to create account right now. Please try again later.' });
   }
 });
 
