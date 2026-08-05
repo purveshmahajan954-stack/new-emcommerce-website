@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Makhana is packed with nutrients linked to focus and memory. Here's what the research says about this ancient superfood."/>
+  <title>The Science Behind Makhana's Cognitive Benefits — Rituals Makhana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --beige: #EDE6DA; --brown: #3B2F1E; --brown-mid: #5C4A38;
+      --cream: #F5EFE6; --gold: #C49A3C; --text: #2E1F0F;
+      --line: rgba(59,47,30,0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--beige); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    #rituals-nav-outer { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; justify-content: center; padding: 14px 24px; pointer-events: none; }
+    #rituals-nav-pill { pointer-events: all; background: var(--beige); border-radius: 100px; padding: 8px 8px 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; max-width: 760px; box-shadow: 0 2px 16px rgba(74,59,42,0.12), 0 0 0 1px rgba(74,59,42,0.07); }
+    #rituals-nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    #rituals-nav-logo img { height: 44px; width: auto; display: block; }
+    #rituals-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    #rituals-nav-links a { font-size: 13px; font-weight: 500; color: var(--brown-mid); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; transition: color 0.18s; }
+    #rituals-nav-links a:hover { color: var(--text); }
+    #rituals-nav-cta { background: var(--brown) !important; color: var(--cream) !important; padding: 10px 20px; border-radius: 100px; font-size: 13px !important; font-weight: 600 !important; letter-spacing: 0.03em !important; transition: background 0.18s !important; flex-shrink: 0; text-decoration: none; }
+    #rituals-nav-cta:hover { background: #2C2215 !important; }
+
+    .hero { min-height: 480px; position: relative; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding: 100px 24px 64px; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(25,18,10,.28) 0%, rgba(25,18,10,.72) 100%); }
+    .hero-inner { max-width: 720px; margin: 0 auto; width: 100%; }
+    .eyebrow { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; color: #fff; line-height: 1.08; letter-spacing: -.02em; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 24px; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+    .article-wrap p { color: var(--brown-mid); font-size: 1.0625rem; line-height: 1.85; margin-bottom: 1.5rem; }
+    .article-wrap h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; color: var(--text); line-height: 1.2; letter-spacing: -.02em; margin: 2.5rem 0 1rem; }
+    .article-wrap h3 { font-size: 1.125rem; font-weight: 700; color: var(--text); margin: 2rem 0 .75rem; }
+    .callout { background: var(--cream); border-left: 3px solid var(--gold); padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 2rem 0; }
+    .callout p { margin: 0; font-weight: 500; color: var(--text); font-size: .9375rem; }
+
+    .nutrient-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 2rem 0; }
+    .nutrient-card { background: var(--cream); border-radius: 16px; padding: 20px; }
+    .nutrient-card .label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .nutrient-card h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .nutrient-card p { font-size: .875rem; line-height: 1.6; color: var(--brown-mid); margin: 0; }
+
+    .article-cta { background: var(--brown); border-radius: 20px; padding: 48px 40px; text-align: center; margin-top: 64px; }
+    .article-cta h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; font-weight: 400; color: #fff; margin-bottom: 12px; }
+    .article-cta p { color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+    .cta-btn { display: inline-block; background: var(--gold); color: var(--brown); padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: 14px; letter-spacing: .04em; text-decoration: none; transition: opacity .18s; }
+    .cta-btn:hover { opacity: .85; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--brown-mid); font-size: 13px; font-weight: 500; text-decoration: none; margin-bottom: 48px; transition: color .18s; }
+    .back-link:hover { color: var(--text); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    footer { background: var(--brown); padding: 40px 24px; text-align: center; }
+    footer p { color: rgba(245,239,230,0.5); font-size: 13px; }
+    footer a { color: rgba(245,239,230,0.7); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+    .footer-links { margin-bottom: 16px; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 90px 20px 48px; min-height: 380px; }
+      .article-wrap { padding: 48px 20px 72px; }
+      .callout { padding: 16px 18px; }
+      #rituals-nav-links li:not(:last-child) { display: none; }
+      .article-cta { padding: 36px 20px; }
+      .article-cta h3 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="rituals-nav-outer">
+    <div id="rituals-nav-pill">
+      <a id="rituals-nav-logo" href="/">
+        <img src="/attached_assets/rituals_logo.png" alt="Rituals Makhana"/>
+      </a>
+      <ul id="rituals-nav-links">
+        <li><a href="/products">Products</a></li>
+        <li><a href="/benefits/">Benefits</a></li>
+        <li><a href="/#our-story">Our Story</a></li>
+        <li><a href="/products" id="rituals-nav-cta">Shop Now</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero">
+    <img src="/attached_assets/image_1784875257903.png" alt="Makhana superfood"/>
+    <div class="hero-inner">
+      <p class="eyebrow">Rituals Journal</p>
+      <h1>The Science Behind Makhana's Cognitive Benefits</h1>
+      <div class="hero-meta">
+        <span>7 min read</span>
+        <span>Nutrition Science</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Home
+    </a>
+
+    <p>Makhana — also known as fox nuts or lotus seeds — has been used in Ayurvedic medicine for thousands of years. But it isn't just tradition: modern nutritional science is catching up, and the evidence for makhana as a brain-supportive food is compelling. Here's what the research actually says.</p>
+
+    <h2>A Nutritional Profile Built for the Brain</h2>
+
+    <p>Before diving into specific compounds, it's worth understanding the baseline. Per 100g, roasted makhana delivers roughly 350 kcal, 9–10g of protein, 14–15g of fibre, and less than 1g of saturated fat. It's low in sodium (before seasoning) and has a glycaemic index significantly lower than most grain-based snacks.</p>
+
+    <p>That macronutrient profile alone sets it apart. But the cognitive story is really told at the micronutrient level.</p>
+
+    <div class="nutrient-grid">
+      <div class="nutrient-card">
+        <div class="label">Energy Metabolism</div>
+        <h4>Thiamine (B1)</h4>
+        <p>Essential for converting glucose into neural energy. Deficiency is directly linked to cognitive decline and memory impairment.</p>
+      </div>
+      <div class="nutrient-card">
+        <div class="label">Neural Function</div>
+        <h4>Magnesium</h4>
+        <p>Regulates NMDA receptors — key to learning and memory formation. Low magnesium is associated with heightened anxiety and poor sleep quality.</p>
+      </div>
+      <div class="nutrient-card">
+        <div class="label">Antioxidant</div>
+        <h4>Kaempferol</h4>
+        <p>A flavonoid found in makhana with demonstrated neuroprotective properties and anti-inflammatory effects in the brain.</p>
+      </div>
+      <div class="nutrient-card">
+        <div class="label">Blood Sugar</div>
+        <h4>Resistant Starch</h4>
+        <p>Slows glucose absorption, preventing the spike-and-crash cycle that degrades sustained attention and working memory.</p>
+      </div>
+    </div>
+
+    <h2>Thiamine: The Focus Vitamin</h2>
+
+    <p>Thiamine (vitamin B1) doesn't get nearly enough attention in popular nutrition discourse, but it plays a foundational role in cognitive function. Every neuron in your brain relies on thiamine-dependent enzymes to metabolise glucose into usable energy.</p>
+
+    <p>When thiamine is insufficient — even subclinically — neural energy production falters. The result is slower processing speed, poorer working memory, and the general mental fog that so many people attribute to stress or poor sleep.</p>
+
+    <p>Makhana is a meaningful dietary source of thiamine. A 30g serving provides a modest but consistent contribution to your daily intake — and consistency matters far more than occasional megadoses.</p>
+
+    <h2>Magnesium and the NMDA Connection</h2>
+
+    <p>Magnesium's role in cognition is increasingly well-understood. It regulates the NMDA (N-methyl-D-aspartate) receptor — a key player in synaptic plasticity, the mechanism by which neurons strengthen connections through repeated use. This is the cellular basis of learning and memory formation.</p>
+
+    <p>Magnesium also serves as a gatekeeper for these receptors, preventing over-excitation that can lead to neural damage. Chronically low magnesium is associated with heightened stress response, impaired sleep (which itself damages cognition), and accelerated cognitive aging.</p>
+
+    <div class="callout">
+      <p>Studies have found that increasing dietary magnesium — even within the normal range — improves working memory and spatial learning in both young and aging subjects.</p>
+    </div>
+
+    <h3>Makhana's Magnesium Content</h3>
+
+    <p>Per 100g, makhana contains around 67mg of magnesium — a meaningful contribution toward the recommended daily intake of 310–420mg depending on age and sex. It's not a standalone source, but as part of a balanced diet it contributes reliably and without the downsides of high-sodium or high-fat alternatives.</p>
+
+    <h2>Kaempferol: Neuroprotection in a Puff</h2>
+
+    <p>Kaempferol is a flavonoid — a class of plant-based compounds with powerful antioxidant and anti-inflammatory properties. Research published in multiple peer-reviewed journals has identified kaempferol as having significant neuroprotective effects, including the ability to cross the blood-brain barrier and reduce neuroinflammation.</p>
+
+    <p>Chronic neuroinflammation is increasingly recognised as a driver of cognitive decline, depression, and neurodegenerative diseases. Foods rich in neuroprotective flavonoids are now a core recommendation in evidence-based dietary approaches to brain health, including the MIND diet.</p>
+
+    <p>Makhana contains kaempferol alongside other flavonoids. While it shouldn't be positioned as a treatment for any condition, its flavonoid content gives it a legitimate place in a brain-health-conscious diet.</p>
+
+    <h2>Blood Sugar Stability and Sustained Attention</h2>
+
+    <p>This is perhaps the most immediately practical cognitive benefit. Attention and working memory are acutely sensitive to blood glucose levels. The ideal state for cognitive performance isn't high blood sugar — it's stable blood sugar, maintained within a fairly narrow range throughout the day.</p>
+
+    <p>Makhana's combination of protein, fibre, and resistant starch makes it genuinely effective at moderating post-meal blood glucose response. Studies on makhana consumption have shown it produces a smaller glycaemic spike compared to equivalent calorie servings of high-starch snacks — a result that translates directly to more sustained attention and fewer cognitive crashes.</p>
+
+    <div class="callout">
+      <p>Brain health isn't built in a single meal. It's the cumulative result of consistent nutritional choices across months and years. The small daily decisions — like what you reach for when you need a snack — add up to something significant.</p>
+    </div>
+
+    <h2>Ancient Food, Modern Evidence</h2>
+
+    <p>Makhana has been cultivated and consumed in the Mithila region of Bihar, India for centuries. Its use in Ayurveda spans kidney function, reproductive health, and — notably — memory and mental acuity. Traditional systems of medicine often get dismissed as pre-scientific, but they frequently represent centuries of empirical observation that precedes formal methodology.</p>
+
+    <p>What's gratifying is that modern nutritional science is now providing the mechanistic explanations for what traditional practitioners observed. The cognitive benefits aren't mystical — they're biochemical. And they're real.</p>
+
+    <div class="article-cta">
+      <h3>Science-backed. Flavour-forward.</h3>
+      <p>Rituals Makhana — roasted, seasoned, and made for the kind of focus that lasts.</p>
+      <a href="/products" class="cta-btn">Explore the Range</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/products">Products</a>
+      <a href="/benefits/">Benefits</a>
+      <a href="/#our-story">Our Story</a>
+    </div>
+    <p>© 2026 Rituals Makhana. Not Just a Snack. A Ritual.</p>
+  </footer>
+
+</body>
+</html>

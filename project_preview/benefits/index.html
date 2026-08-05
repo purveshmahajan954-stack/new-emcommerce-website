@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Discover the science behind Rituals Makhana and build a clearer, calmer daily ritual."/>
+  <title>Benefits — Rituals Makhana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --beige: #EDE6DA;
+      --brown: #3B2F1E;
+      --brown-mid: #5C4A38;
+      --brown-light: #7A5A3A;
+      --cream: #F5EFE6;
+      --gold: #C49A3C;
+      --text: #2E1F0F;
+      --sage: #73806A;
+      --terracotta: #A66546;
+      --line: rgba(59,47,30,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--beige);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    /* ── NAV PILL ── */
+    #rituals-nav-outer {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 9999; display: flex; justify-content: center;
+      padding: 14px 24px; pointer-events: none;
+    }
+    #rituals-nav-pill {
+      pointer-events: all;
+      background: var(--beige);
+      border-radius: 100px;
+      padding: 8px 8px 8px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; width: 100%; max-width: 920px;
+      box-shadow: 0 2px 16px rgba(74,59,42,0.12), 0 0 0 1px rgba(74,59,42,0.07);
+    }
+    #rituals-nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none; flex-shrink: 0;
+    }
+    #rituals-nav-logo img {
+      height: 44px; width: auto; display: block;
+    }
+    #rituals-nav-links {
+      display: flex; align-items: center; gap: 24px; list-style: none;
+    }
+    #rituals-nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--brown-mid);
+      text-decoration: none; letter-spacing: 0.02em;
+      white-space: nowrap; transition: color 0.18s;
+    }
+    #rituals-nav-links a:hover { color: var(--text); }
+    #rituals-nav-links a.active { color: var(--text); font-weight: 700; }
+    #rituals-nav-cta {
+      background: var(--brown) !important; color: var(--cream) !important;
+      padding: 10px 20px; border-radius: 100px;
+      font-size: 13px !important; font-weight: 600 !important;
+      letter-spacing: 0.03em !important; transition: background 0.18s !important;
+      flex-shrink: 0; text-decoration: none;
+    }
+    #rituals-nav-cta:hover { background: #2C2215 !important; }
+
+    .page-body { padding-top: 80px; }
+    .eyebrow {
+      color: var(--gold); font-size: 10px; font-weight: 700;
+      letter-spacing: .28em; text-transform: uppercase;
+    }
+    .section-heading {
+      color: var(--text); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.25rem, 5vw, 4.25rem); font-weight: 400;
+      letter-spacing: -.03em; line-height: 1.04;
+    }
+    .body-copy {
+      color: var(--brown-mid); font-size: 1rem; line-height: 1.85;
+    }
+    .rule { border: 0; border-top: 1px solid var(--line); margin: 0 5vw; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: min(850px, calc(100vh - 40px));
+      position: relative; display: grid; place-items: center;
+      overflow: hidden; isolation: isolate; text-align: center;
+      padding: 120px 28px 96px; background: var(--brown);
+    }
+    .hero-backdrop {
+      position: absolute; inset: -8%; z-index: -2;
+      background:
+        radial-gradient(ellipse at 20% 22%, rgba(166,101,70,.46), transparent 34%),
+        radial-gradient(ellipse at 83% 70%, rgba(196,154,60,.23), transparent 32%),
+        linear-gradient(135deg, #332719 0%, #5A422E 47%, #2D241A 100%);
+      transform: scale(1.04);
+      animation: ken-burns 22s ease-in-out infinite alternate;
+    }
+    .hero-backdrop::after {
+      content: ''; position: absolute; inset: 0; opacity: .22;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    .hero::after {
+      content: ''; position: absolute; z-index: -1; inset: 0;
+      background: linear-gradient(180deg, rgba(25,18,10,.25), rgba(25,18,10,.64));
+    }
+    .hero-inner { max-width: 830px; position: relative; }
+    .hero-label {
+      display: inline-flex; border: 1px solid rgba(196,154,60,.55);
+      color: var(--gold); background: rgba(196,154,60,.1);
+      border-radius: 100px; padding: 8px 17px; margin-bottom: 31px;
+      font-size: 10px; font-weight: 700; letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      color: var(--cream); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(3.25rem, 8vw, 7.3rem); font-weight: 400;
+      letter-spacing: -.045em; line-height: .96; margin-bottom: 23px;
+    }
+    .hero h1 .word { display: inline-block; }
+    .hero-sub {
+      color: var(--gold); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.55rem, 3vw, 2.45rem); font-style: italic;
+      line-height: 1.1; margin-bottom: 30px;
+    }
+    .hero-body {
+      color: rgba(245,239,230,.77); font-size: 1rem; line-height: 1.9;
+      max-width: 640px; margin: 0 auto;
+    }
+    .hero-scroll-hint {
+      align-items: center; color: rgba(245,239,230,.5); display: flex;
+      flex-direction: column; font-size: 10px; gap: 10px;
+      letter-spacing: .22em; margin-top: 58px; text-transform: uppercase;
+    }
+    .hero-scroll-hint svg { height: 21px; width: 21px; }
+    @keyframes ken-burns {
+      from { transform: scale(1.04) translate3d(-1%, -1%, 0); }
+      to { transform: scale(1.12) translate3d(1%, 1%, 0); }
+    }
+
+    /* ── PULL QUOTE ── */
+    .core-section {
+      background: var(--cream); padding: clamp(100px, 16vw, 190px) 28px;
+      text-align: center;
+    }
+    .core-section .eyebrow { margin-bottom: 25px; }
+    .core-quote {
+      color: var(--text); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2rem, 8vw, 7.2rem); font-weight: 400;
+      letter-spacing: -.055em; line-height: .92; margin: 0 auto 34px;
+      max-width: 940px;
+    }
+    .core-section .body-copy { margin: auto; max-width: 570px; }
+
+    /* ── NUTRIENTS: DESKTOP SCRUB ── */
+    .nutrients-section { background: var(--beige); }
+    .nutrient-scroll { height: 520vh; position: relative; }
+    .nutrient-stage {
+      align-items: center; display: flex; gap: clamp(40px, 8vw, 130px);
+      height: calc(100vh - 108px); min-height: 620px; overflow: hidden;
+      padding: 55px max(28px, 8vw); position: sticky; top: 84px;
+    }
+    .nutrient-intro { flex: 0 0 min(35vw, 410px); }
+    .nutrient-intro .eyebrow { margin-bottom: 20px; }
+    .nutrient-intro h2 { margin-bottom: 25px; }
+    .nutrient-intro .body-copy { max-width: 365px; }
+    .nutrient-progress {
+      align-items: center; display: flex; gap: 12px; margin-top: 58px;
+    }
+    .nutrient-progress-line {
+      background: rgba(59,47,30,.17); height: 1px; position: relative; width: 130px;
+    }
+    .nutrient-progress-line::after {
+      background: var(--gold); content: ''; height: 2px; left: 0;
+      position: absolute; top: -1px; transform-origin: left; width: var(--progress, 20%);
+    }
+    .nutrient-step {
+      color: var(--brown-light); font-size: 11px; letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .nutrient-cards { flex: 1; height: min(66vh, 600px); position: relative; }
+    .nutrient-card {
+      background: var(--cream); border: 1px solid rgba(59,47,30,.1);
+      box-shadow: 15px 18px 50px rgba(59,47,30,.08);
+      display: flex; flex-direction: column; justify-content: space-between;
+      height: 100%; opacity: 0; padding: clamp(30px, 5vw, 70px);
+      position: absolute; inset: 0; transform: translateY(24px) scale(.98);
+    }
+    .nutrient-card.is-active { opacity: 1; transform: translateY(0) scale(1); }
+    .nutrient-card::before {
+      background: var(--accent, var(--gold)); content: ''; height: 4px;
+      left: 0; position: absolute; right: 0; top: 0;
+    }
+    .nutrient-card-top { display: flex; justify-content: space-between; gap: 24px; }
+    .nutrient-icon {
+      align-items: center; border: 1px solid rgba(59,47,30,.2);
+      color: var(--accent, var(--gold)); display: flex; height: 58px;
+      justify-content: center; width: 58px;
+    }
+    .nutrient-icon svg { height: 27px; width: 27px; }
+    .nutrient-index {
+      color: rgba(59,47,30,.35); font-size: 11px; letter-spacing: .2em;
+      padding-top: 10px;
+    }
+    .nutrient-source {
+      color: var(--accent, var(--gold)); font-size: 11px; font-weight: 700;
+      letter-spacing: .2em; margin-bottom: 17px; text-transform: uppercase;
+    }
+    .nutrient-benefit {
+      color: var(--text); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.3rem, 4.2vw, 4.6rem); letter-spacing: -.04em;
+      line-height: .98; max-width: 620px;
+    }
+    .nutrient-desc {
+      color: var(--brown-mid); font-size: .95rem; line-height: 1.8;
+      max-width: 490px;
+    }
+    .nutrient-mobile { display: none; }
+
+    /* ── GABA ── */
+    .gaba-section { background: var(--brown); color: var(--cream); padding: 130px 8vw; }
+    .gaba-inner {
+      align-items: start; display: grid; gap: clamp(50px, 10vw, 150px);
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); margin: auto;
+      max-width: 1200px;
+    }
+    .gaba-copy .eyebrow { margin-bottom: 22px; }
+    .gaba-heading {
+      color: var(--cream); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(3rem, 6vw, 5.9rem); font-weight: 400;
+      letter-spacing: -.05em; line-height: .93; margin-bottom: 31px;
+    }
+    .gaba-heading em { color: var(--gold); }
+    .gaba-body { color: rgba(245,239,230,.67); font-size: .98rem; line-height: 1.85; max-width: 420px; }
+    .gaba-items { border-top: 1px solid rgba(245,239,230,.17); list-style: none; }
+    .gaba-item {
+      align-items: center; border-bottom: 1px solid rgba(245,239,230,.17);
+      display: flex; gap: 23px; min-height: 136px; padding: 24px 0;
+    }
+    .gaba-item-icon {
+      align-items: center; border: 1px solid rgba(196,154,60,.55); color: var(--gold);
+      display: flex; flex: 0 0 48px; height: 48px; justify-content: center; width: 48px;
+    }
+    .gaba-item-icon svg { height: 22px; width: 22px; }
+    .gaba-item strong { color: var(--cream); display: block; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.45rem; font-weight: 400; margin-bottom: 6px; }
+    .gaba-item span { color: rgba(245,239,230,.58); font-size: .85rem; line-height: 1.6; }
+
+    /* ── B VITAMINS ── */
+    .bvit-section { background: var(--cream); padding: 130px 8vw; }
+    .bvit-inner { margin: auto; max-width: 1200px; }
+    .bvit-intro { align-items: end; display: flex; justify-content: space-between; gap: 30px; }
+    .bvit-intro .eyebrow { margin-bottom: 20px; }
+    .bvit-intro .body-copy { max-width: 380px; }
+    .bvit-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 70px; }
+    .bvit-card {
+      border-left: 1px solid var(--line); min-height: 390px; overflow: hidden;
+      padding: 36px clamp(25px, 4vw, 54px); position: relative;
+    }
+    .bvit-card:last-child { border-right: 1px solid var(--line); }
+    .bvit-watermark {
+      color: rgba(59,47,30,.075); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(9rem, 18vw, 15rem); left: 11px; line-height: .7;
+      pointer-events: none; position: absolute; top: 24px; user-select: none;
+    }
+    .bvit-content { position: relative; }
+    .bvit-badge {
+      color: var(--gold); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.35rem; margin-bottom: 86px;
+    }
+    .bvit-tag {
+      color: var(--gold); font-size: 10px; font-weight: 700;
+      letter-spacing: .22em; margin-bottom: 12px; text-transform: uppercase;
+    }
+    .bvit-name {
+      color: var(--text); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.65rem; line-height: 1.1; margin-bottom: 19px;
+    }
+    .bvit-desc { color: var(--brown-mid); font-size: .87rem; line-height: 1.75; }
+
+    /* ── CLOSING ── */
+    .cta-section { background: var(--beige); padding: 150px 28px 170px; text-align: center; }
+    .cta-kicker { color: var(--gold); font-size: 48px; line-height: .6; margin-bottom: 35px; }
+    .cta-quote {
+      color: var(--text); font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.25rem, 5vw, 4.8rem); font-style: italic;
+      letter-spacing: -.04em; line-height: 1.03; margin: auto auto 52px;
+      max-width: 1000px;
+    }
+    .cta-btn {
+      align-items: center; background: var(--brown); border-radius: 100px;
+      color: var(--cream); display: inline-flex; font-size: 12px; font-weight: 700;
+      gap: 12px; letter-spacing: .16em; padding: 17px 30px;
+      text-decoration: none; text-transform: uppercase;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .cta-btn:hover { background: #2C2215; transform: scale(1.035); }
+    .cta-btn svg { height: 17px; width: 17px; }
+
+    /* ── REVEALS / RESPONSIVE ── */
+    .reveal, .reveal-child { will-change: transform, opacity; }
+  /* ── HAMBURGER MENU ── */
+  #rituals-hamburger { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px; flex-shrink: 0; }
+  #rituals-hamburger span { display: block; width: 20px; height: 2px; background: #3B2F1E; border-radius: 2px; transition: all 0.25s ease; }
+  #rituals-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #rituals-hamburger.open span:nth-child(2) { opacity: 0; }
+  #rituals-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  #rituals-mobile-controls { display: none; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+  @media (max-width: 768px) {
+    #rituals-nav-links { display: none !important; }
+    #rituals-nav-outer { padding: 12px 16px; }
+    #rituals-nav-pill { gap: 0; }
+    #rituals-mobile-controls { display: flex; }
+  }
+  #rituals-mobile-cta { display: flex; background: #3B2F1E; color: #F5EFE6 !important; padding: 8px 16px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px !important; font-weight: 600 !important; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  #rituals-mobile-menu { display: none; position: fixed; top: 70px; left: 16px; right: 16px; background: #EDE6DA; border-radius: 20px; box-shadow: 0 4px 24px rgba(74,59,42,0.15), 0 0 0 1px rgba(74,59,42,0.08); z-index: 9998; overflow: hidden; flex-direction: column; }
+  #rituals-mobile-menu.open { display: flex; }
+  #rituals-mobile-menu a { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: #5C4A38; text-decoration: none; padding: 14px 24px; border-bottom: 1px solid rgba(74,59,42,0.08); transition: background 0.15s; }
+  #rituals-mobile-menu a:last-child { border-bottom: none; }
+  #rituals-mobile-menu a:hover { background: rgba(74,59,42,0.06); }
+  #rituals-mobile-menu a.mobile-shop-btn { color: #F5EFE6; background: #3B2F1E; margin: 12px; border-radius: 100px; text-align: center; font-weight: 600; border-bottom: none; }
+  #rituals-mobile-menu a.mobile-shop-btn:hover { background: #2C2215; }
+
+    @media (max-width: 800px) {
+      #rituals-nav-outer { padding: 12px 14px; }
+      #rituals-nav-pill { padding-left: 18px; gap: 12px; }
+      .page-body { padding-top: 70px; }
+      .hero { min-height: calc(100vh - 24px); padding: 110px 22px 70px; }
+      .hero h1 { font-size: clamp(3.3rem, 16vw, 6rem); }
+      .nutrient-scroll { height: auto; }
+      .nutrient-stage { display: block; height: auto; min-height: 0; overflow: visible; padding: 95px 22px 42px; position: static; }
+      .nutrient-intro { width: 100%; }
+      .nutrient-intro .body-copy { max-width: 520px; }
+      .nutrient-progress { display: none; }
+      .nutrient-cards { display: none; }
+      .nutrient-mobile { display: block; padding: 0 22px 90px; }
+      .nutrient-mobile .nutrient-card {
+        display: flex; height: auto; min-height: 440px; opacity: 1;
+        padding: 34px 28px; position: relative; transform: none; margin-bottom: 15px;
+      }
+      .nutrient-mobile .nutrient-card:last-child { margin-bottom: 0; }
+      .nutrient-mobile .nutrient-benefit { font-size: 2.45rem; }
+      .gaba-section, .bvit-section { padding: 95px 22px; }
+      .gaba-inner { grid-template-columns: 1fr; gap: 65px; }
+      .gaba-heading { font-size: clamp(3.4rem, 15vw, 5.5rem); }
+      .bvit-intro { align-items: start; flex-direction: column; }
+      .bvit-grid { grid-template-columns: 1fr; margin-top: 48px; }
+      .bvit-card, .bvit-card:last-child { border-right: 0; min-height: 350px; }
+      .bvit-card + .bvit-card { border-top: 1px solid var(--line); }
+      .bvit-watermark { font-size: 12rem; }
+      .cta-section { padding: 105px 22px 120px; }
+    }
+    @media (max-width: 430px) {
+      #rituals-nav-logo .rn-rituals { font-size: 22px; }
+      #rituals-nav-links a { font-size: 12px; }
+      #rituals-nav-links li:first-child { display: none; }
+      .hero-body { font-size: .92rem; }
+      .nutrient-mobile .nutrient-card { min-height: 405px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV PILL ── -->
+<div id="rituals-nav-outer">
+  <div id="rituals-nav-pill">
+    <a id="rituals-nav-logo" href="/">
+      <img src="/attached_assets/rituals_logo.png" alt="Rituals Makhana" />
+    </a>
+    <ul id="rituals-nav-links">
+      <li><a href="/products/">Products</a></li>
+      <li><a href="/benefits/" class="active">Benefits</a></li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="/wellness/">Wellness Score</a></li>
+      <li><a href="/products/" id="rituals-nav-cta">Shop Now</a></li>
+    </ul>
+    <div id="rituals-mobile-controls">
+      <a id="rituals-mobile-cta" href="/products/">Shop Now</a>
+      <button id="rituals-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</div>
+<div id="rituals-mobile-menu">
+  <a href="/products/">Products</a>
+  <a href="/benefits/">Benefits</a>
+  <a href="/#our-story">Our Story</a>
+  <a href="/wellness/">Wellness Score</a>
+  <a href="/products/" class="mobile-shop-btn">Shop Now</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('rituals-hamburger');
+  var menu = document.getElementById('rituals-mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function() { var o = menu.classList.toggle('open'); btn.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); });
+  menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { menu.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded', false); }); });
+  document.addEventListener('click', function(e) { if (!menu.contains(e.target) && !btn.contains(e.target)) { menu.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+})();
+</script>
+
+<main class="page-body">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <span class="hero-label">The Science of Focus</span>
+      <h1 id="hero-title"><span class="word">Do you desire</span><br/><span class="word">to be great?</span></h1>
+      <p class="hero-sub">Adopt This Ritual</p>
+      <p class="hero-body">The desire to be great has always moved us beyond the ordinary. In an age of choices and distractions, greatness asks for something quieter: a daily ritual that brings your attention back to what matters.</p>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+        <span>Scroll to explore</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="core-section reveal" aria-labelledby="core-title">
+    <p class="eyebrow">Why Makhana</p>
+    <h2 class="core-quote" id="core-title">Regain your greatness</h2>
+    <p class="body-copy">What if the journey back to laser-sharp focus and mental balance began with something as simple as a handful? Makhana brings an ancient ingredient into a modern ritual for the way you want to feel.</p>
+  </section>
+
+  <hr class="rule"/>
+
+  <section class="nutrients-section" aria-labelledby="nutrients-title">
+    <div class="nutrient-scroll">
+      <div class="nutrient-stage">
+        <div class="nutrient-intro reveal">
+          <p class="eyebrow">Nutrient profile</p>
+          <h2 class="section-heading" id="nutrients-title">What's inside every pouch</h2>
+          <p class="body-copy">A precise constellation of brain-supporting compounds, roasted into a light, satisfying ritual that meets you where your ambition is.</p>
+          <div class="nutrient-progress">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+              <button class="nutr-nav-btn nutr-prev" onclick="window.prevNutrient()" aria-label="Previous nutrient" style="background:#EDE6DA;border:1px solid rgba(59,47,30,0.2);color:#3B2F1E;width:34px;height:34px;border-radius:100px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:18px;line-height:1;transition:background 0.2s;">‹</button>
+              <div style="display:flex;gap:6px;" id="nutr-step-pills">
+                <button class="nutr-pill active" onclick="window.jumpNutrient(0)" style="background:#3B2F1E;color:#F5EFE6;border:none;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;">01</button>
+                <button class="nutr-pill" onclick="window.jumpNutrient(1)" style="background:#EDE6DA;color:#5C4A38;border:none;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;">02</button>
+                <button class="nutr-pill" onclick="window.jumpNutrient(2)" style="background:#EDE6DA;color:#5C4A38;border:none;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;">03</button>
+                <button class="nutr-pill" onclick="window.jumpNutrient(3)" style="background:#EDE6DA;color:#5C4A38;border:none;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;">04</button>
+                <button class="nutr-pill" onclick="window.jumpNutrient(4)" style="background:#EDE6DA;color:#5C4A38;border:none;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;">05</button>
+              </div>
+              <button class="nutr-nav-btn nutr-next" onclick="window.nextNutrient()" aria-label="Next nutrient" style="background:#EDE6DA;border:1px solid rgba(59,47,30,0.2);color:#3B2F1E;width:34px;height:34px;border-radius:100px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:18px;line-height:1;transition:background 0.2s;">›</button>
+            </div>
+            <div style="width:100%;height:3px;background:rgba(59,47,30,0.12);border-radius:2px;overflow:hidden;">
+              <div id="nutr-progress-bar" style="width:20%;height:100%;background:#3B2F1E;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="nutrient-cards" aria-live="polite">
+          <article class="nutrient-card is-active" data-index="0" style="--accent: var(--sage);">
+            <div class="nutrient-card-top">
+              <div class="nutrient-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4.8-3.1 7.5-6.6 7.5-10.2A4.8 4.8 0 0 0 12 7.2a4.8 4.8 0 0 0-7.5 3.6C4.5 14.4 7.2 17.9 12 21Z"/><path d="M12 7.2v10.6M8.5 11.1c1.2.2 2.4.9 3.5 2.1M15.5 10.5c-1.2.3-2.4 1.1-3.5 2.4"/></svg>
+              </div>
+              <span class="nutrient-index">01 / 05</span>
+            </div>
+            <div>
+              <p class="nutrient-source">Antioxidants</p>
+              <h3 class="nutrient-benefit">Neuroprotection</h3>
+            </div>
+            <p class="nutrient-desc">Free-radical scavengers help shield brain cells from oxidative stress, preserving the clarity you rely on over the long term.</p>
+          </article>
+          <article class="nutrient-card" data-index="1" style="--accent: var(--gold);">
+            <div class="nutrient-card-top">
+              <div class="nutrient-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M7.4 4.1 12 3l4.6 1.1 2.9 3.7-.5 4.7-2.9 3.7-4.6 1.7-4.6-1.7L4 12.5l-.5-4.7 3.9-3.7Z"/></svg>
+              </div>
+              <span class="nutrient-index">02 / 05</span>
+            </div>
+            <div>
+              <p class="nutrient-source">Vitamin E</p>
+              <h3 class="nutrient-benefit">Membrane defence</h3>
+            </div>
+            <p class="nutrient-desc">Vitamin E protects the lipid membranes of neurons from damage, helping signals travel with speed and reliability.</p>
+          </article>
+          <article class="nutrient-card" data-index="2" style="--accent: var(--terracotta);">
+            <div class="nutrient-card-top">
+              <div class="nutrient-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M8 5.5 12 3l4 2.5M5 9l3-3.5M19 9l-3-3.5M5 15l3 3.5M19 15l-3 3.5M8 18.5 12 21l4-2.5"/></svg>
+              </div>
+              <span class="nutrient-index">03 / 05</span>
+            </div>
+            <div>
+              <p class="nutrient-source">Iron</p>
+              <h3 class="nutrient-benefit">Increased oxygen to brain</h3>
+            </div>
+            <p class="nutrient-desc">Iron supports haemoglobin production and oxygen delivery, so you can stay alert and clear-headed through demanding days.</p>
+          </article>
+          <article class="nutrient-card" data-index="3" style="--accent: var(--sage);">
+            <div class="nutrient-card-top">
+              <div class="nutrient-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4.4-2.4 7-5.5 7-9.4C19 6.6 15.8 3 12 3S5 6.6 5 11.6c0 3.9 2.6 7 7 9.4Z"/><path d="M12 7c-1.8 2.2-2.7 4.3-2.7 6.4 0 2.3 1.1 3.9 2.7 4.8 1.6-.9 2.7-2.5 2.7-4.8C14.7 11.3 13.8 9.2 12 7Z"/></svg>
+              </div>
+              <span class="nutrient-index">04 / 05</span>
+            </div>
+            <div>
+              <p class="nutrient-source">Protein · Fibre · Potassium</p>
+              <h3 class="nutrient-benefit">Overall wellness</h3>
+            </div>
+            <p class="nutrient-desc">A considered macro profile supports gut health, muscle function and even energy — the foundation of a focused life.</p>
+          </article>
+          <article class="nutrient-card" data-index="4" style="--accent: var(--gold);">
+            <div class="nutrient-card-top">
+              <div class="nutrient-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3a7 7 0 0 1 7 7c0 3.6-2.2 5.1-3.6 6.4-.7.7-1.1 1.4-1.1 2.6H9.7c0-1.2-.4-1.9-1.1-2.6C7.2 15.1 5 13.6 5 10a7 7 0 0 1 7-7Z"/><path d="M9 22h6M9.5 19h5M12 7v5M9.5 10.5 12 12l2.5-1.5"/></svg>
+              </div>
+              <span class="nutrient-index">05 / 05</span>
+            </div>
+            <div>
+              <p class="nutrient-source">Low GI · B-vitamins · Magnesium</p>
+              <h3 class="nutrient-benefit">Prolonged focus &amp; sustained clarity</h3>
+            </div>
+            <p class="nutrient-desc">Steady blood sugar, neural metabolism and regulated excitability come together to support deep concentration for longer.</p>
+          </article>
+        </div>
+      </div>
+      <div class="nutrient-mobile">
+        <article class="nutrient-card reveal" style="--accent: var(--sage);">
+          <div class="nutrient-card-top"><div class="nutrient-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4.8-3.1 7.5-6.6 7.5-10.2A4.8 4.8 0 0 0 12 7.2a4.8 4.8 0 0 0-7.5 3.6C4.5 14.4 7.2 17.9 12 21Z"/><path d="M12 7.2v10.6M8.5 11.1c1.2.2 2.4.9 3.5 2.1M15.5 10.5c-1.2.3-2.4 1.1-3.5 2.4"/></svg></div><span class="nutrient-index">01 / 05</span></div>
+          <div><p class="nutrient-source">Antioxidants</p><h3 class="nutrient-benefit">Neuroprotection</h3></div><p class="nutrient-desc">Free-radical scavengers help shield brain cells from oxidative stress, preserving the clarity you rely on over the long term.</p>
+        </article>
+        <article class="nutrient-card reveal" style="--accent: var(--gold);">
+          <div class="nutrient-card-top"><div class="nutrient-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M7.4 4.1 12 3l4.6 1.1 2.9 3.7-.5 4.7-2.9 3.7-4.6 1.7-4.6-1.7L4 12.5l-.5-4.7 3.9-3.7Z"/></svg></div><span class="nutrient-index">02 / 05</span></div>
+          <div><p class="nutrient-source">Vitamin E</p><h3 class="nutrient-benefit">Membrane defence</h3></div><p class="nutrient-desc">Vitamin E protects the lipid membranes of neurons from damage, helping signals travel with speed and reliability.</p>
+        </article>
+        <article class="nutrient-card reveal" style="--accent: var(--terracotta);">
+          <div class="nutrient-card-top"><div class="nutrient-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M8 5.5 12 3l4 2.5M5 9l3-3.5M19 9l-3-3.5M5 15l3 3.5M19 15l-3 3.5M8 18.5 12 21l4-2.5"/></svg></div><span class="nutrient-index">03 / 05</span></div>
+          <div><p class="nutrient-source">Iron</p><h3 class="nutrient-benefit">Increased oxygen to brain</h3></div><p class="nutrient-desc">Iron supports haemoglobin production and oxygen delivery, so you can stay alert and clear-headed through demanding days.</p>
+        </article>
+        <article class="nutrient-card reveal" style="--accent: var(--sage);">
+          <div class="nutrient-card-top"><div class="nutrient-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21c4.4-2.4 7-5.5 7-9.4C19 6.6 15.8 3 12 3S5 6.6 5 11.6c0 3.9 2.6 7 7 9.4Z"/><path d="M12 7c-1.8 2.2-2.7 4.3-2.7 6.4 0 2.3 1.1 3.9 2.7 4.8 1.6-.9 2.7-2.5 2.7-4.8C14.7 11.3 13.8 9.2 12 7Z"/></svg></div><span class="nutrient-index">04 / 05</span></div>
+          <div><p class="nutrient-source">Protein · Fibre · Potassium</p><h3 class="nutrient-benefit">Overall wellness</h3></div><p class="nutrient-desc">A considered macro profile supports gut health, muscle function and even energy — the foundation of a focused life.</p>
+        </article>
+        <article class="nutrient-card reveal" style="--accent: var(--gold);">
+          <div class="nutrient-card-top"><div class="nutrient-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3a7 7 0 0 1 7 7c0 3.6-2.2 5.1-3.6 6.4-.7.7-1.1 1.4-1.1 2.6H9.7c0-1.2-.4-1.9-1.1-2.6C7.2 15.1 5 13.6 5 10a7 7 0 0 1 7-7Z"/><path d="M9 22h6M9.5 19h5M12 7v5M9.5 10.5 12 12l2.5-1.5"/></svg></div><span class="nutrient-index">05 / 05</span></div>
+          <div><p class="nutrient-source">Low GI · B-vitamins · Magnesium</p><h3 class="nutrient-benefit">Prolonged focus &amp; sustained clarity</h3></div><p class="nutrient-desc">Steady blood sugar, neural metabolism and regulated excitability come together to support deep concentration for longer.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule"/>
+
+  <section class="gaba-section" aria-labelledby="gaba-title">
+    <div class="gaba-inner">
+      <div class="gaba-copy reveal">
+        <p class="eyebrow">Calming neuroscience</p>
+        <h2 class="gaba-heading" id="gaba-title">Beyond focus —<br/><em>balance too.</em></h2>
+        <p class="gaba-body">Makhana contains natural compounds that activate GABA receptors — the brain's primary inhibitory system. GABA activation calms neuron firing, giving you room to think, restore and return to yourself.</p>
+      </div>
+      <ul class="gaba-items">
+        <li class="gaba-item reveal-child"><div class="gaba-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5 7.5 7.5 0 1 0 19 14.5Z"/><path d="M17 5v4M15 7h4"/></svg></div><div><strong>Deep, restful sleep</strong><span>Quiets mental chatter so your brain can fully recover overnight.</span></div></li>
+        <li class="gaba-item reveal-child"><div class="gaba-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M7 12h10"/></svg></div><div><strong>Balanced emotional state</strong><span>Helps reduce anxious noise and mood volatility, keeping you grounded under pressure.</span></div></li>
+        <li class="gaba-item reveal-child"><div class="gaba-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 17c2.1-1 3-2.4 3-4.4V8.8M18 17c-2.1-1-3-2.4-3-4.4V8.8M4 18.5h16M8 6.5c0-1.2 1-2 2-2s2 .8 2 2M12 6.5c0-1.2 1-2 2-2s2 .8 2 2"/></svg></div><div><strong>Reduced muscle spasms</strong><span>Supports neuromuscular calm, so your body can match your focused mind.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bvit-section" aria-labelledby="bvit-title">
+    <div class="bvit-inner">
+      <div class="bvit-intro reveal">
+        <div><p class="eyebrow">Energy metabolism</p><h2 class="section-heading" id="bvit-title">The B-vitamin trio</h2></div>
+        <p class="body-copy">Three essential B-vitamins work in concert to power your brain's energy factories and keep focus burning bright under pressure.</p>
+      </div>
+      <div class="bvit-grid">
+        <article class="bvit-card reveal-child"><span class="bvit-watermark" aria-hidden="true">B1</span><div class="bvit-content"><p class="bvit-badge">B1</p><p class="bvit-tag">Thiamine</p><h3 class="bvit-name">Converts glucose to ATP</h3><p class="bvit-desc">Thiamine turns carbohydrate into usable cellular energy. It gives your brain a steady, clean fuel source for the work ahead.</p></div></article>
+        <article class="bvit-card reveal-child"><span class="bvit-watermark" aria-hidden="true">B2</span><div class="bvit-content"><p class="bvit-badge">B2</p><p class="bvit-tag">Riboflavin</p><h3 class="bvit-name">Enhances mitochondrial power</h3><p class="bvit-desc">Riboflavin supports the mitochondria — your cells' power plants — so neurons can fire with consistency during high-demand tasks.</p></div></article>
+        <article class="bvit-card reveal-child"><span class="bvit-watermark" aria-hidden="true">B3</span><div class="bvit-content"><p class="bvit-badge">B3</p><p class="bvit-tag">Niacin</p><h3 class="bvit-name">Supports focus under stress</h3><p class="bvit-desc">Niacin helps synthesise NAD+, a coenzyme important for cellular repair and resilience when the day asks more of you.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-labelledby="cta-title">
+    <p class="cta-kicker" aria-hidden="true">“</p>
+    <h2 class="cta-quote" id="cta-title">The fittest one survives — at the end, it's you who truly can fulfil your desire to be great, by regaining the greatness within you.</h2>
+    <a href="/products/" class="cta-btn">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  (function () {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealDefaults = { duration: 0.8, ease: 'power2.out' };
+
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (reduceMotion) {
+      gsap.set('.reveal, .reveal-child, .hero-label, .hero-sub, .hero-body, .hero-scroll-hint, .hero h1 .word', { autoAlpha: 1, x: 0, y: 0, scale: 1 });
+    } else {
+      const hero = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      hero.from('.hero-label', { autoAlpha: 0, y: 16, duration: .65 })
+        .from('.hero h1 .word', { autoAlpha: 0, y: 42, duration: .85, stagger: .12 }, '-=.25')
+        .from('.hero-sub', { autoAlpha: 0, y: 18, duration: .7 }, '-=.45')
+        .from('.hero-body', { autoAlpha: 0, y: 18, duration: .7 }, '-=.4')
+        .from('.hero-scroll-hint', { autoAlpha: 0, y: 12, duration: .6 }, '-=.35');
+
+      gsap.utils.toArray('.reveal').forEach(function (element) {
+        gsap.fromTo(element, { autoAlpha: 0, y: 34 }, {
+          ...revealDefaults, autoAlpha: 1, y: 0,
+          scrollTrigger: { trigger: element, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+      });
+      gsap.utils.toArray('.gaba-items, .bvit-grid').forEach(function (group) {
+        gsap.fromTo(group.querySelectorAll('.reveal-child'), { autoAlpha: 0, y: 26 }, {
+          ...revealDefaults, autoAlpha: 1, y: 0, stagger: .15,
+          scrollTrigger: { trigger: group, start: 'top 80%', toggleActions: 'play none none reverse' }
+        });
+      });
+
+      /* CTA — scale+fade entrance as specified */
+      gsap.fromTo('.cta-kicker', { autoAlpha: 0, scale: .88 }, {
+        autoAlpha: 1, scale: 1, duration: .65, ease: 'power2.out',
+        scrollTrigger: { trigger: '.cta-section', start: 'top 80%', toggleActions: 'play none none reverse' }
+      });
+      gsap.fromTo('.cta-quote', { autoAlpha: 0, scale: .94, y: 22 }, {
+        autoAlpha: 1, scale: 1, y: 0, duration: .9, ease: 'power2.out',
+        scrollTrigger: { trigger: '.cta-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+        delay: .1
+      });
+      gsap.fromTo('.cta-btn', { autoAlpha: 0, y: 16 }, {
+        autoAlpha: 1, y: 0, duration: .65, ease: 'power2.out',
+        scrollTrigger: { trigger: '.cta-section', start: 'top 80%', toggleActions: 'play none none reverse' },
+        delay: .35
+      });
+    }
+
+    const nutrientCards = gsap.utils.toArray('.nutrient-cards .nutrient-card');
+    const progressLine = document.querySelector('.nutrient-progress-line');
+    const currentStep = document.querySelector('.current-step');
+    let activeIndex = 0;
+
+    function activateNutrient(index, immediate) {
+      if (index === activeIndex && !immediate) return;
+      const oldCard = nutrientCards[activeIndex];
+      const nextCard = nutrientCards[index];
+      if (!oldCard || !nextCard) return;
+      if (immediate || reduceMotion) {
+        gsap.set(oldCard, { autoAlpha: 0, y: 24, scale: .98 });
+        gsap.set(nextCard, { autoAlpha: 1, y: 0, scale: 1 });
+      } else {
+        gsap.to(oldCard, { autoAlpha: 0, y: -24, scale: .97, duration: .38, ease: 'power1.out' });
+        const tl = gsap.timeline();
+        tl.fromTo(nextCard, { autoAlpha: 0, y: 24, scale: 1.02 }, { autoAlpha: 1, y: 0, scale: 1, duration: .5, ease: 'power1.out' });
+        const icon = nextCard.querySelector('.nutrient-icon');
+        if (icon) {
+          tl.fromTo(icon, { autoAlpha: 0, scale: .6, rotate: -8 }, { autoAlpha: 1, scale: 1, rotate: 0, duration: .4, ease: 'back.out(1.8)' }, '-=.28');
+        }
+        const source = nextCard.querySelector('.nutrient-source');
+        if (source) {
+          tl.fromTo(source, { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: .3, ease: 'power2.out' }, '-=.25');
+        }
+      }
+      oldCard.classList.remove('is-active');
+      nextCard.classList.add('is-active');
+      oldCard.setAttribute('aria-hidden', 'true');
+      nextCard.setAttribute('aria-hidden', 'false');
+      activeIndex = index;
+      if (currentStep) currentStep.textContent = String(index + 1).padStart(2, '0');
+      if (progressLine) progressLine.style.setProperty('--progress', ((index + 1) / nutrientCards.length * 100) + '%');
+
+      const progressBar = document.getElementById('nutr-progress-bar');
+      if (progressBar) progressBar.style.width = ((index + 1) / nutrientCards.length * 100) + '%';
+
+      const pills = document.querySelectorAll('#nutr-step-pills .nutr-pill');
+      pills.forEach((p, i) => {
+        if (i === index) {
+          p.style.background = '#3B2F1E';
+          p.style.color = '#F5EFE6';
+        } else {
+          p.style.background = '#EDE6DA';
+          p.style.color = '#5C4A38';
+        }
+      });
+    }
+
+    window.jumpNutrient = function(idx) {
+      activateNutrient(idx, false);
+    };
+    window.prevNutrient = function() {
+      const prev = (activeIndex - 1 + nutrientCards.length) % nutrientCards.length;
+      activateNutrient(prev, false);
+    };
+    window.nextNutrient = function() {
+      const next = (activeIndex + 1) % nutrientCards.length;
+      activateNutrient(next, false);
+    };
+
+    if (nutrientCards.length) {
+      nutrientCards.forEach(function (card, index) {
+        card.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
+      });
+      if (!reduceMotion && window.matchMedia('(min-width: 801px)').matches) {
+        ScrollTrigger.create({
+          trigger: '.nutrient-scroll',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: .65,
+          onUpdate: function (self) {
+            const index = Math.min(nutrientCards.length - 1, Math.floor(self.progress * nutrientCards.length));
+            activateNutrient(index, false);
+            if (progressLine) progressLine.style.setProperty('--progress', ((index + 1) / nutrientCards.length * 100) + '%');
+          }
+        });
+      }
+    }
+  }());
+</script>
+<script src="/auth-modal.js"></script>
+</body>
+</html>
