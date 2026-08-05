@@ -651,13 +651,14 @@
     Rituals Makhana Admin Dashboard &copy; 2026. All rights reserved. | <a href="/">Visit Main Store</a>
   </footer>
 
+  <script src="/api-config.js"></script>
   <script>
     let currentAdminProducts = [];
 
     // Check existing admin session on load
     async function checkAdminSession() {
       try {
-        const res = await fetch('/api/admin/me');
+        const res = await fetch((window.API_BASE||'') + '/api/admin/me', { credentials: 'include' });
         const data = await res.json();
         if (data.isAdmin) {
           showDashboard();
@@ -694,7 +695,8 @@
       btn.textContent = 'Verifying credentials...';
 
       try {
-        const res = await fetch('/api/admin/login', {
+        const res = await fetch((window.API_BASE||'') + '/api/admin/login', {
+          credentials: 'include',
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: user, password: pwd })
@@ -723,7 +725,8 @@
     }
 
     async function adminLogout() {
-      await fetch('/api/admin/logout', { method: 'POST' });
+      await fetch((window.API_BASE||'') + '/api/admin/logout', {
+          credentials: 'include', method: 'POST' });
       showLogin();
     }
 
@@ -737,7 +740,7 @@
 
     async function fetchCustomers() {
       try {
-        const res = await fetch('/api/admin/customers');
+        const res = await fetch((window.API_BASE||'') + '/api/admin/customers', { credentials: 'include' });
         const customers = await res.json();
         document.getElementById('metric-customers').textContent = customers.length || 0;
 
@@ -764,7 +767,7 @@
 
     async function fetchOrders() {
       try {
-        const res = await fetch('/api/admin/orders');
+        const res = await fetch((window.API_BASE||'') + '/api/admin/orders', { credentials: 'include' });
         const orders = await res.json();
         document.getElementById('metric-orders').textContent = orders.length || 0;
 
@@ -798,7 +801,7 @@
 
     async function fetchSales() {
       try {
-        const res = await fetch('/api/admin/sales');
+        const res = await fetch((window.API_BASE||'') + '/api/admin/sales', { credentials: 'include' });
         const sales = await res.json();
 
         document.getElementById('metric-revenue').textContent = '₹' + (sales.total_revenue || 0);
@@ -827,7 +830,7 @@
 
     async function fetchProducts() {
       try {
-        const res = await fetch('/api/products');
+        const res = await fetch((window.API_BASE||'') + '/api/products', { credentials: 'include' });
         currentAdminProducts = await res.json();
 
         document.getElementById('metric-products').textContent = currentAdminProducts.length || 0;

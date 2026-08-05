@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="/api-config.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -996,7 +997,7 @@
   updateCartUI();
 
   // Sync products from server
-  fetch('/api/products')
+  fetch((window.API_BASE||'') + '/api/products', { credentials: 'include' })
     .then(r => r.ok ? r.json() : [])
     .then(prods => {
       prods.forEach(p => {
@@ -1173,7 +1174,7 @@
 
   async function getRzpKey() {
     if (_rzpKeyId) return _rzpKeyId;
-    const res = await fetch('/api/config');
+    const res = await fetch((window.API_BASE||'') + '/api/config', { credentials: 'include' });
     const data = await res.json();
     _rzpKeyId = data.razorpay_key_id;
     return _rzpKeyId;
@@ -1206,7 +1207,8 @@
         return;
       }
 
-      const orderRes = await fetch('/api/orders/create', {
+      const orderRes = await fetch((window.API_BASE||'') + '/api/orders/create', {
+          credentials: 'include',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: amountPaise }),
@@ -1223,7 +1225,8 @@
         image:       '/attached_assets/rituals_logo.png',
         order_id:    order.id,
         handler: async function (response) {
-          const verRes = await fetch('/api/orders/verify', {
+          const verRes = await fetch((window.API_BASE||'') + '/api/orders/verify', {
+          credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -360,7 +360,7 @@
 
   async function checkSession() {
     try {
-      const res = await fetch('/api/auth/me');
+      const res = await fetch((window.API_BASE||'') + '/api/auth/me', { credentials: 'include' });
       const data = await res.json();
       currentUser = data.user || null;
     } catch (_) {
@@ -417,7 +417,8 @@
       clearErr('am-login-err');
       btn.disabled = true; btn.textContent = 'Signing in…';
       try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch((window.API_BASE||'') + '/api/auth/login', {
+          credentials: 'include',
           method: 'POST', headers: {'Content-Type':'application/json'},
           body: JSON.stringify({ email, password: pwd })
         });
@@ -443,7 +444,8 @@
       clearErr('am-register-err');
       btn.disabled = true; btn.textContent = 'Creating account…';
       try {
-        const res = await fetch('/api/auth/register', {
+        const res = await fetch((window.API_BASE||'') + '/api/auth/register', {
+          credentials: 'include',
           method: 'POST', headers: {'Content-Type':'application/json'},
           body: JSON.stringify({ name, email, password: pwd })
         });
@@ -471,7 +473,8 @@
       }
     },
     async logout() {
-      await fetch('/api/auth/logout', { method: 'POST' });
+      await fetch((window.API_BASE||'') + '/api/auth/logout', {
+          credentials: 'include', method: 'POST' });
       currentUser = null;
       injectNav(null);
     },

@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="/api-config.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -274,7 +275,7 @@ function fmtMonth(iso) {
 }
 
 async function init() {
-  const res = await fetch('/api/auth/me');
+  const res = await fetch((window.API_BASE||'') + '/api/auth/me', { credentials: 'include' });
   const { user } = await res.json();
 
   document.getElementById('loading-state').style.display = 'none';
@@ -289,7 +290,7 @@ async function init() {
 }
 
 async function loadProfile() {
-  const res = await fetch('/api/profile');
+  const res = await fetch((window.API_BASE||'') + '/api/profile', { credentials: 'include' });
   if (!res.ok) return;
   const p = await res.json();
 
@@ -307,7 +308,7 @@ async function loadProfile() {
 }
 
 async function loadOrders() {
-  const res = await fetch('/api/orders');
+  const res = await fetch((window.API_BASE||'') + '/api/orders', { credentials: 'include' });
   const orders = await res.json();
   const el = document.getElementById('orders-list');
 
@@ -377,7 +378,8 @@ async function loadOrders() {
 }
 
 async function doLogout() {
-  await fetch('/api/auth/logout', { method: 'POST' });
+  await fetch((window.API_BASE||'') + '/api/auth/logout', {
+          credentials: 'include', method: 'POST' });
   window.location.href = '/';
 }
 
@@ -397,7 +399,7 @@ function showToast(msg, isError) {
 var _rzpKey = null;
 async function getRzpKey() {
   if (_rzpKey) return _rzpKey;
-  const res = await fetch('/api/config');
+  const res = await fetch((window.API_BASE||'') + '/api/config', { credentials: 'include' });
   const data = await res.json();
   _rzpKey = data.razorpay_key_id;
   return _rzpKey;
@@ -411,7 +413,8 @@ async function retryPayment(btn, oldOrderId, amountPaise, itemsJson) {
     if (!keyId) { showToast('Payments not configured. Contact us.', true); return; }
 
     // Create a fresh Razorpay order for the same amount
-    const orderRes = await fetch('/api/orders/create', {
+    const orderRes = await fetch((window.API_BASE||'') + '/api/orders/create', {
+          credentials: 'include',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: amountPaise }),
@@ -430,7 +433,8 @@ async function retryPayment(btn, oldOrderId, amountPaise, itemsJson) {
       image: '/attached_assets/rituals_logo.png',
       order_id: order.id,
       handler: async function(response) {
-        const verRes = await fetch('/api/orders/verify', {
+        const verRes = await fetch((window.API_BASE||'') + '/api/orders/verify', {
+          credentials: 'include',
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

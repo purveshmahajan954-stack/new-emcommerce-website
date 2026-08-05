@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="/api-config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -381,7 +382,7 @@ let chartInstance = null;
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 async function init() {
   setTodayLabel();
-  const res = await fetch('/api/auth/me');
+  const res = await fetch((window.API_BASE||'') + '/api/auth/me', { credentials: 'include' });
   const data = await res.json();
   if (data.user) {
     currentUser = data.user;
@@ -417,7 +418,8 @@ async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const pwd   = document.getElementById('login-pwd').value;
   clearError('login-error');
-  const res = await fetch('/api/auth/login', {
+  const res = await fetch((window.API_BASE||'') + '/api/auth/login', {
+          credentials: 'include',
     method: 'POST', headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ email, password: pwd })
   });
@@ -432,7 +434,8 @@ async function doRegister() {
   const email = document.getElementById('reg-email').value.trim();
   const pwd   = document.getElementById('reg-pwd').value;
   clearError('register-error');
-  const res = await fetch('/api/auth/register', {
+  const res = await fetch((window.API_BASE||'') + '/api/auth/register', {
+          credentials: 'include',
     method: 'POST', headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ name, email, password: pwd })
   });
@@ -443,7 +446,8 @@ async function doRegister() {
 }
 
 async function doLogout() {
-  await fetch('/api/auth/logout', { method: 'POST' });
+  await fetch((window.API_BASE||'') + '/api/auth/logout', {
+          credentials: 'include', method: 'POST' });
   currentUser = null;
   showAuth();
 }
@@ -462,7 +466,7 @@ async function showLoggedIn() {
     </div>`;
 
   // Check today's log
-  const logRes = await fetch('/api/wellness/log');
+  const logRes = await fetch((window.API_BASE||'') + '/api/wellness/log', { credentials: 'include' });
   const log = await logRes.json();
   if (log) {
     populateForm(log);
@@ -506,7 +510,8 @@ async function submitLog() {
   btn.disabled = true;
   btn.textContent = 'Saving…';
 
-  const res = await fetch('/api/wellness/log', {
+  const res = await fetch((window.API_BASE||'') + '/api/wellness/log', {
+          credentials: 'include',
     method: 'POST', headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ calories, water, sleep, steps })
   });
@@ -560,7 +565,7 @@ async function loadLeaderboard() {
   const monthLabel = new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
   document.getElementById('board-month-label').textContent = monthLabel;
 
-  const res = await fetch('/api/wellness/leaderboard');
+  const res = await fetch((window.API_BASE||'') + '/api/wellness/leaderboard', { credentials: 'include' });
   const board = await res.json();
   const el = document.getElementById('board-content');
 
@@ -590,7 +595,7 @@ async function loadLeaderboard() {
 
 // ─── PERSONAL STATS ───────────────────────────────────────────────────────────
 async function loadStats() {
-  const res = await fetch('/api/wellness/stats');
+  const res = await fetch((window.API_BASE||'') + '/api/wellness/stats', { credentials: 'include' });
   const s = await res.json();
   const todayEl = document.getElementById('stat-today');
   const avgEl   = document.getElementById('stat-avg');
@@ -613,7 +618,7 @@ async function loadStats() {
 
 // ─── CHART ────────────────────────────────────────────────────────────────────
 async function loadChart() {
-  const res = await fetch('/api/wellness/chart');
+  const res = await fetch((window.API_BASE||'') + '/api/wellness/chart', { credentials: 'include' });
   const data = await res.json();
 
   const labels = data.map(d => {
@@ -668,7 +673,7 @@ async function loadChart() {
 
 // ─── LAST WINNER ─────────────────────────────────────────────────────────────
 async function loadWinner() {
-  const res = await fetch('/api/wellness/last-winner');
+  const res = await fetch((window.API_BASE||'') + '/api/wellness/last-winner', { credentials: 'include' });
   const w = await res.json();
   const wrap = document.getElementById('winner-wrap');
   if (!w) { wrap.innerHTML = ''; return; }
