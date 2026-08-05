@@ -13,8 +13,7 @@ const ROOT = process.cwd();
 const PORT = process.env.PORT || 5000;
 const DB_FILE = path.join(ROOT, 'wellness_data.json');
 
-const DATABASE_URL = process.env.SUPABASE_DATABASE_URL
-  || 'postgresql://postgres:makhana%40%2312345@db.rpyibuyljbbtxyqaxnlt.supabase.co:5432/postgres';
+const DATABASE_URL = process.env.SUPABASE_DATABASE_URL;
 
 const pool = new Pool({
   connectionString: DATABASE_URL,
