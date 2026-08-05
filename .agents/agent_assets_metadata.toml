@@ -1,0 +1,9 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "52-zdhISQ3do7-0MQWQM1"
+uri = "file://rituals-makhana-updated.zip"
+type = "unspecified"
+title = "Rituals Makhana — Updated Files"
+description = "Saari updated files: navbar More dropdown, logo fix, Our Story links fixed, aur server improvements ke saath."
