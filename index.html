@@ -617,7 +617,9 @@ html, body { scroll-padding-top: 150px; }
   border: none;
 }
 </style>
-<img id="hero-video" class="video-desktop hero-image" src="attached_assets/image_1785919049900.png" alt="Rituals Makhana Tangy Cheese on a calm living-room table">
+<video id="hero-video" class="video-desktop" autoplay muted loop playsinline poster="attached_assets/image_1785919049900.png" aria-label="Rituals Makhana Tangy Cheese on a calm living-room table">
+  <source src="attached_assets/watermark-removed-watermark-removed-Product_pouch_on_coffee_ta_1785920124156.mp4" type="video/mp4">
+</video>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('hero-video')
@@ -645,15 +647,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (unmuteBtn) unmuteBtn.style.display = muted ? 'block' : 'none'
     if (playBtn) playBtn.style.display = paused ? 'block' : 'none'
     if (pauseBtn) pauseBtn.style.display = paused ? 'none' : 'block'
-  }
-
-  // The uploaded hero asset is a still frame, so hide media controls that
-  // would otherwise suggest that this image can be played or muted.
-  if (video.tagName === 'IMG') {
-    ;[muteBtn, unmuteBtn, playBtn, pauseBtn].forEach(btn => {
-      if (btn) btn.style.display = 'none'
-    })
-    return
   }
 
   video.addEventListener('play', syncButtons)
