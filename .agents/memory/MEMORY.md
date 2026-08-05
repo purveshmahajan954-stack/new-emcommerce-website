@@ -1,2 +1,3 @@
 - [Imported static sites](imported-static-sites.md) — verify the runtime named by the workflow is installed before changing the imported site structure.
 - [Workflow port reuse](workflow-port-reuse.md) — imported Python servers may need socket reuse enabled after rapid workflow restarts.
+- [Database connection resilience](database-connection-resilience.md) — handle PostgreSQL pool/client errors so bad credentials do not crash the web server.

@@ -21,6 +21,9 @@ let pool;
 try {
   if (!DATABASE_URL) throw new Error('SUPABASE_DATABASE_URL is not set');
   pool = new Pool({ connectionString: DATABASE_URL, ssl: { rejectUnauthorized: false } });
+  pool.on('error', err => {
+    console.error('PostgreSQL pool error:', err.message);
+  });
 } catch (poolErr) {
   console.warn('DB pool could not be created:', poolErr.message);
   pool = {
@@ -30,8 +33,12 @@ try {
 }
 
 async function initDb() {
+  let client;
   try {
-    const client = await pool.connect();
+    client = await pool.connect();
+    client.on('error', err => {
+      console.error('PostgreSQL client error:', err.message);
+    });
     console.log('Connected to PostgreSQL database successfully.');
 
     await client.query(`
@@ -206,9 +213,10 @@ async function initDb() {
       }
     }
 
-    client.release();
   } catch (err) {
     console.error('PostgreSQL init error:', err.message);
+  } finally {
+    client?.release();
   }
 }
 
