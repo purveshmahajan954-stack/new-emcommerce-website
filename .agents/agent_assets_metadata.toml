@@ -14,3 +14,10 @@ uri = "file://attached_assets/watermark-removed-watermark-removed-Product_pouch_
 type = "video"
 title = "Rituals Makhana Hero Video"
 description = "Homepage hero video — download this MP4 and upload it to your hPanel hosting."
+
+[[outputs]]
+id = "XmVPp5RN0d43ytnvUgHyB"
+uri = "file://rituals-makhana-hpanel.zip"
+type = "unspecified"
+title = "Rituals Makhana — Complete Project ZIP"
+description = "Complete project package for hPanel upload, including website source, assets, and the homepage hero MP4. node_modules, Git metadata, caches, and Replit-only files are excluded."
