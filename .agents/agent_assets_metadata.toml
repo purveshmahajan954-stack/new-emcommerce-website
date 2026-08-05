@@ -7,3 +7,10 @@ uri = "file://rituals-makhana-updated.zip"
 type = "unspecified"
 title = "Rituals Makhana — Updated Files"
 description = "Saari updated files: navbar More dropdown, logo fix, Our Story links fixed, aur server improvements ke saath."
+
+[[outputs]]
+id = "m6Z0Cpmn191_tCo92STV-"
+uri = "file://attached_assets/watermark-removed-watermark-removed-Product_pouch_on_coffee_ta_1785920124156.mp4"
+type = "video"
+title = "Rituals Makhana Hero Video"
+description = "Homepage hero video — download this MP4 and upload it to your hPanel hosting."
