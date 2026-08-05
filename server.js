@@ -282,7 +282,7 @@ async function closeLastMonth() {
 // ── EXPRESS APP SETUP ──
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -699,7 +699,9 @@ function adminRequired(req, res, next) {
 app.post('/api/admin/login', async (req, res) => {
   try {
     const { username, password } = req.body || {};
-    if (username === 'makhana' && password === 'makhana') {
+    const ADMIN_USER = process.env.ADMIN_USERNAME || 'makhana';
+    const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'makhana';
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
       req.session.isAdmin = true;
       await new Promise((resolve, reject) =>
         req.session.save(err => err ? reject(err) : resolve())

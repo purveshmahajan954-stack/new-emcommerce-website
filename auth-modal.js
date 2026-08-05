@@ -449,14 +449,23 @@
         });
         let data;
         try { data = await res.json(); } catch (_) { data = {}; }
-        if (!res.ok) { showErr('am-register-err', data.error || 'Account creation failed. Please try again.'); return; }
+        if (!res.ok) {
+          if (res.status === 409) {
+            showErr('am-register-err', 'This email is already registered. Please sign in instead.');
+          } else if (!res.status || res.status === 0 || res.status === 404) {
+            showErr('am-register-err', 'Server not reachable. Make sure the backend server is running.');
+          } else {
+            showErr('am-register-err', data.error || 'Account creation failed. Please try again.');
+          }
+          return;
+        }
         currentUser = data;
         injectNav(currentUser);
         window.__authModal.close();
         window.dispatchEvent(new CustomEvent('auth-changed', { detail: currentUser }));
         const cb = window.__authModal._onLogin; window.__authModal._onLogin = null; if (cb) cb();
       } catch (err) {
-        showErr('am-register-err', err.message || 'Network error. Please try again.');
+        showErr('am-register-err', 'Cannot connect to server. Make sure the Node.js backend is running.');
       } finally {
         btn.disabled = false; btn.textContent = 'Create account';
       }

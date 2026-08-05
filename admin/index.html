@@ -702,13 +702,19 @@
         let data;
         try { data = await res.json(); } catch (_) { data = {}; }
         if (!res.ok) {
-          errEl.textContent = data.error || 'Invalid username or password';
+          if (res.status === 401) {
+            errEl.textContent = 'Invalid username or password. Default: makhana / makhana';
+          } else if (res.status === 404 || res.status === 0) {
+            errEl.textContent = 'Server not running. Please start the Node.js server.';
+          } else {
+            errEl.textContent = data.error || 'Login failed. Please try again.';
+          }
           errEl.style.display = 'block';
         } else {
           showDashboard();
         }
       } catch (err) {
-        errEl.textContent = 'Server unreachable. Please check your connection.';
+        errEl.textContent = 'Cannot reach server. Make sure Node.js backend is running (npm start).';
         errEl.style.display = 'block';
       } finally {
         btn.disabled = false;

@@ -21,3 +21,10 @@ uri = "file://rituals-makhana-hpanel.zip"
 type = "unspecified"
 title = "Rituals Makhana — Complete Project ZIP"
 description = "Complete project package for hPanel upload, including website source, assets, and the homepage hero MP4. node_modules, Git metadata, caches, and Replit-only files are excluded."
+
+[[outputs]]
+id = "qbNmhAsjq64dR3tj7YNIj"
+uri = "file://rituals-makhana-deploy.zip"
+type = "unspecified"
+title = "rituals-makhana-deploy.zip"
+description = "Complete project package — upload to Hostinger Node.js hosting. See setup steps below."
